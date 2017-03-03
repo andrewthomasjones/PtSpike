@@ -11,15 +11,15 @@ fullroute = function(method, affydata, label, C.ind, S.ind) {
         bgcorrect.param = list()
         if (bgcorrect.method == "none") bg.correct = F
         if (bgcorrect.method == "gcrma-rs") {
-                bgcorrect.method = "gcrma"
+                bgcorrect.method = "rma"
                 bgcorrect.param = list(fast=F)
         }
         if (bgcorrect.method == "gcrma-lf") {
-                bgcorrect.method = "gcrma"
+                bgcorrect.method = "rma"
                 bgcorrect.param = list(affinity.source="local")
         }        
 	if (bgcorrect.method == "gcrma-ls") {
-                bgcorrect.method = "gcrma"
+                bgcorrect.method = "rma"
                 bgcorrect.param = list(affinity.source="local", fast=F)
         }
         # probe normalization
@@ -55,6 +55,7 @@ fullroute = function(method, affydata, label, C.ind, S.ind) {
         } else {
                 summary.method = mets[5]
         }
+	      print(bgcorrect.method)
         eset = expresso(affydata, bg.correct=bg.correct, bgcorrect.method=bgcorrect.method, bgcorrect.param=bgcorrect.param, normalize=normalize, normalize.method=normalize.method, normalize.param=normalize.param, pmcorrect.method=pmcorrect.method, summary.method=summary.method)
         if (!is.null(summary.method)) {
                 if (summary.method == "medianpolish" | summary.method == "farms" | summary.method == "dfw") exprs(eset) = 2^exprs(eset) # Note: the intensities returned by medianpolish and farms are in log2 scale, so I change it back to natural scale
