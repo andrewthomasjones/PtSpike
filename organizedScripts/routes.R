@@ -21,9 +21,12 @@ library(limma)
 library(samr)
 source("./organizedScripts/DEGtests.R")
 
-methods = c("gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.cyberT", "none.vsn.3.pmonly.medianpolish.constant.3.samr", "gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.samr",
-		"gcrma-rs.constant.3.pmonly.medianpolish.vsn.1.cyberT", "gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.limma", "gcrma-rs.constant.3.pmonly.medianpolish.vsn.1.limma",
-		"none.vsn.3.pmonly.medianpolish.constant.3.limma", "none.vsn.3.pmonly.medianpolish.quantiles.1.fc", "rma.vsn.1.pmonly.medianpolish.scaling.3.samr") # 9 of the top 10 routes. Achemy method can't not be performed using this script.
+#methods = c("gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.cyberT", "none.vsn.3.pmonly.medianpolish.constant.3.samr", "gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.samr",
+#		"gcrma-rs.constant.3.pmonly.medianpolish.vsn.1.cyberT", "gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.limma", "gcrma-rs.constant.3.pmonly.medianpolish.vsn.1.limma",
+#		"none.vsn.3.pmonly.medianpolish.constant.3.limma", "none.vsn.3.pmonly.medianpolish.quantiles.1.fc", "rma.vsn.1.pmonly.medianpolish.scaling.3.samr") 
+#vsn not available anymore
+methods = c("gcrma-rs.scaling.3.pmonly.medianpolish.none.1.cyberT", "gcrma-rs.scaling.3.pmonly.medianpolish.none.1.samr",
+            "gcrma-rs.constant.3.pmonly.medianpolish.none.1.cyberT", "gcrma-rs.scaling.3.pmonly.medianpolish.none.1.limma", "gcrma-rs.constant.3.pmonly.medianpolish.none.1.limma") # 9 of the top 10 routes. Achemy method can't not be performed using this script.
 # Note: 
 # "gcrma-rs" corresponds to "gcrma-reb" in publication.
 # "1" means technical normalization, "2" means conditional normalization and "3" means normalization using all arrays.
