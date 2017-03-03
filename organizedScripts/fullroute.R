@@ -33,7 +33,7 @@ fullroute = function(method, affydata, label, C.ind, S.ind) {
 	normalize.group = "" 
         if (mets[2] != "none") {
                 normalize = T
-                normalize.method = "group"
+                normalize.method = mets[2]
                 normalize.group = as.numeric(mets[3])
                 group = c()
                 for (ng in 1:length(nor.group[[normalize.group]])) {
@@ -55,11 +55,14 @@ fullroute = function(method, affydata, label, C.ind, S.ind) {
         } else {
                 summary.method = mets[5]
         }
-	      print(bgcorrect.method)
-        eset = expresso(affydata, bg.correct=bg.correct, bgcorrect.method=bgcorrect.method, bgcorrect.param=bgcorrect.param, normalize=normalize, normalize.method=normalize.method, normalize.param=normalize.param, pmcorrect.method=pmcorrect.method, summary.method=summary.method)
+
+        #eset = expresso(affydata, bg.correct=bg.correct, bgcorrect.method=bgcorrect.method, bgcorrect.param=bgcorrect.param, normalize=normalize, normalize.method=normalize.method, normalize.param=normalize.param, pmcorrect.method=pmcorrect.method, summary.method=summary.method)
+        eset = expresso(affydata, bg.correct=bg.correct, bgcorrect.method=bgcorrect.method, bgcorrect.param=bgcorrect.param, normalize=normalize, normalize.method=normalize.method, pmcorrect.method=pmcorrect.method, summary.method=summary.method)
+        
         if (!is.null(summary.method)) {
                 if (summary.method == "medianpolish" | summary.method == "farms" | summary.method == "dfw") exprs(eset) = 2^exprs(eset) # Note: the intensities returned by medianpolish and farms are in log2 scale, so I change it back to natural scale
         }
+       
         # probeset normalization
         if (mets[6] != "none") {
                 if (normalize.group != as.numeric(mets[7])) {
@@ -72,6 +75,7 @@ fullroute = function(method, affydata, label, C.ind, S.ind) {
                 normalize.param = list(group=group, nor.method=mets[6])
                 eset = do.call("normalize", c(alist(eset, "group"), normalize.param))
         }
+
 	output = paste(label, method, "RData", sep=".")
 	# DEG test
 	if (!is.na(mets[8])) {
