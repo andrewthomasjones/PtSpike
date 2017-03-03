@@ -31,7 +31,7 @@ methods = c("gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.cyberT", "none.vsn.3.p
 nmethods = length(methods)
 print(methods)
 
-load("test/Affydata.raw.RData")
+load("./test/Affydata.raw.RData")
 conditions = c("A", "B")
 sample.names = sampleNames(affydata)
 print(sample.names)
