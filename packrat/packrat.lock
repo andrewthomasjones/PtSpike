@@ -1,0 +1,285 @@
+PackratFormat: 1.4
+PackratVersion: 0.4.8.1
+RVersion: 3.3.0
+Repos: BioCsoft=https://bioconductor.org/packages/3.4/bioc,
+    BioCann=https://bioconductor.org/packages/3.4/data/annotation,
+    BioCexp=https://bioconductor.org/packages/3.4/data/experiment,
+    BioCextra=https://bioconductor.org/packages/3.4/extra,
+    CRAN=https://cran.rstudio.com/
+
+Package: AnnotationDbi
+Source: Bioconductor
+Version: 1.36.2
+Hash: 796766a173c714002457b251206af516
+Requires: Biobase, BiocGenerics, DBI, IRanges, RSQLite, S4Vectors
+
+Package: BH
+Source: CRAN
+Version: 1.62.0-1
+Hash: 14dfb3e8ffe20996118306ff4de1fab2
+
+Package: Biobase
+Source: Bioconductor
+Version: 2.34.0
+Hash: cd3d884ba3f526861c54f24f5f52203d
+Requires: BiocGenerics
+
+Package: BiocGenerics
+Source: Bioconductor
+Version: 0.20.0
+Hash: ce45642fa93df3c66879867d96815407
+
+Package: BiocInstaller
+Source: Bioconductor
+Version: 1.24.0
+Hash: b1c2c51cc77fd1031c7851d3116c39d0
+
+Package: Biostrings
+Source: CRAN
+Version: 2.42.1
+Requires: BiocGenerics, IRanges, S4Vectors, XVector
+
+Package: DBI
+Source: CRAN
+Version: 0.5-1
+Hash: 375869004db963f9915f2b8a49b4a718
+
+Package: DynDoc
+Source: CRAN
+Version: 1.52.0
+
+Package: EMMIXcontrasts
+Source: CRAN
+Version: 1.0.0
+
+Package: IRanges
+Source: Bioconductor
+Version: 2.8.1
+Hash: adc09dacfff17e1e378be32badc8420f
+Requires: BiocGenerics, S4Vectors
+
+Package: RColorBrewer
+Source: CRAN
+Version: 1.1-2
+Hash: c0d56cd15034f395874c870141870c25
+
+Package: ROCR
+Source: CRAN
+Version: 1.0-7
+Requires: gplots
+
+Package: RSQLite
+Source: CRAN
+Version: 1.1-2
+Hash: 124177a480ba0335eb30ed3878971bf8
+Requires: BH, DBI, Rcpp, memoise, plogr
+
+Package: Rcpp
+Source: CRAN
+Version: 0.12.9
+Hash: 7ab41cbe74918de8de87e435ef17e92d
+
+Package: S4Vectors
+Source: Bioconductor
+Version: 0.12.1
+Hash: 4d8813ffb0587334d6058d23843da2cb
+Requires: BiocGenerics
+
+Package: XVector
+Source: CRAN
+Version: 0.14.0
+Requires: BiocGenerics, IRanges, S4Vectors, zlibbioc
+
+Package: affy
+Source: CRAN
+Version: 1.52.0
+Requires: Biobase, BiocGenerics, BiocInstaller, affyio, preprocessCore,
+    zlibbioc
+
+Package: affyPLM
+Source: CRAN
+Version: 1.50.0
+Requires: Biobase, BiocGenerics, affy, gcrma, preprocessCore, zlibbioc
+
+Package: affyio
+Source: CRAN
+Version: 1.44.0
+Requires: zlibbioc
+
+Package: assertthat
+Source: CRAN
+Version: 0.1
+Hash: 0afb92b59b02593c70ff8046700ba9d3
+
+Package: bitops
+Source: CRAN
+Version: 1.0-6
+
+Package: caTools
+Source: CRAN
+Version: 1.17.1
+Requires: bitops
+
+Package: colorspace
+Source: CRAN
+Version: 1.3-2
+Hash: 0bf8618b585fa98eb23414cd3ab95118
+
+Package: dichromat
+Source: CRAN
+Version: 2.0-0
+Hash: 08eed0c80510af29bb15f840ccfe37ce
+
+Package: digest
+Source: CRAN
+Version: 0.6.12
+Hash: e53fb8c58673df868183697e39a6a4d6
+
+Package: gcrma
+Source: CRAN
+Version: 2.46.0
+Requires: Biobase, BiocInstaller, Biostrings, XVector, affy, affyio
+
+Package: gdata
+Source: CRAN
+Version: 2.17.0
+Hash: e7d520c2a9597b303f54499e3bd90644
+Requires: gtools
+
+Package: ggplot2
+Source: CRAN
+Version: 2.2.1
+Hash: 46e5cb78836848aa44655e577433f54b
+Requires: digest, gtable, lazyeval, plyr, reshape2, scales, tibble
+
+Package: gplots
+Source: CRAN
+Version: 3.0.1
+Requires: caTools, gdata, gtools
+
+Package: gtable
+Source: CRAN
+Version: 0.2.0
+Hash: cd78381a9d3fea966ac39bd0daaf5554
+
+Package: gtools
+Source: CRAN
+Version: 3.5.0
+Hash: 471b2e2452dfb30fdc1dd6f1b567925a
+
+Package: impute
+Source: CRAN
+Version: 1.48.0
+
+Package: labeling
+Source: CRAN
+Version: 0.3
+Hash: ecf589b42cd284b03a4beb9665482d3e
+
+Package: lazyeval
+Source: CRAN
+Version: 0.2.0
+Hash: 3d6e7608e65bbf5cb170dab1e3c9ed8b
+
+Package: limma
+Source: CRAN
+Version: 3.30.11
+
+Package: magrittr
+Source: CRAN
+Version: 1.5
+Hash: bdc4d48c3135e8f3b399536ddf160df4
+
+Package: matrixStats
+Source: CRAN
+Version: 0.51.0
+
+Package: memoise
+Source: CRAN
+Version: 1.0.0
+Hash: 56e7087c3559eb7ba72a9afb349bf896
+Requires: digest
+
+Package: munsell
+Source: CRAN
+Version: 0.4.3
+Hash: f96d896947fcaf9b6d0074002e9f4f9d
+Requires: colorspace
+
+Package: packrat
+Source: CRAN
+Version: 0.4.8-1
+Hash: 6ad605ba7b4b476d84be6632393f5765
+
+Package: plogr
+Source: CRAN
+Version: 0.1-1
+Hash: fb19215402e2d9f1c7f803dcaa806fc2
+
+Package: plyr
+Source: CRAN
+Version: 1.8.4
+Hash: ce3897d2ea6dabdb2c0a217b25f5fe99
+Requires: Rcpp
+
+Package: preprocessCore
+Source: CRAN
+Version: 1.36.0
+
+Package: reshape
+Source: CRAN
+Version: 0.8.6
+Hash: 1f1ab97e8341bf4dcf16d60d8434b530
+Requires: plyr
+
+Package: reshape2
+Source: CRAN
+Version: 1.4.2
+Hash: 85d9947f8a5e187dff7f18265b96cb13
+Requires: Rcpp, plyr, stringr
+
+Package: samr
+Source: CRAN
+Version: 2.0
+Requires: impute, matrixStats
+
+Package: scales
+Source: CRAN
+Version: 0.4.1
+Hash: bc8d2233a63b068b0f60b18303d60c55
+Requires: RColorBrewer, Rcpp, dichromat, labeling, munsell, plyr
+
+Package: stringi
+Source: CRAN
+Version: 1.1.2
+Hash: 1ad6b1cc11d982ac233bf2fa2f7c9684
+
+Package: stringr
+Source: CRAN
+Version: 1.1.0
+Hash: 4d21d0063b37a17ea18eaec6acd29bf3
+Requires: magrittr, stringi
+
+Package: tibble
+Source: CRAN
+Version: 1.2
+Hash: 3857905737a164648031462bed6aa2ef
+Requires: Rcpp, assertthat, lazyeval
+
+Package: tkWidgets
+Source: CRAN
+Version: 1.52.0
+Requires: DynDoc, widgetTools
+
+Package: vsn
+Source: CRAN
+Version: 3.42.3
+Requires: Biobase, affy, ggplot2, limma
+
+Package: widgetTools
+Source: CRAN
+Version: 1.52.0
+
+Package: zlibbioc
+Source: CRAN
+Version: 1.20.0

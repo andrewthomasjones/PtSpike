@@ -1,0 +1,12 @@
+# Applying analysis routes on the Platinum Spike dataset 
+#
+# Note:
+# The scripts were run using R 2.7.2. vsn normalization randomly choose probe or probesets as baseline, therefore routes using vsn normalization will generate slightly different results each time.
+#
+# citation: Zhu Q, Miecznikowski J, Halfon M (2010). Preferred analysis methods for Affymetrix GeneChips. II. An expanded, balanced, wholly-defined spike-in dataset. BMC Bioinformatics. (2010) 11:285.
+#
+# Qianqian Zhu, 8/2010
+
+R --no-save < LoadAffy.R # load the Platinum Spike dataset and save as a R object
+R --no-save < routes.R # run analysis routes
+R --no-save < DEGAUC.R # calculate partial AUC values
