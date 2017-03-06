@@ -23,10 +23,12 @@ truth[fcinfo$V2==0] = 0 # not differentially expressed probesets
 names(truth) = fcinfo$V1
 truth = truth[!is.na(truth)]
 
-methods = c("gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.cyberT", "none.vsn.3.pmonly.medianpolish.constant.3.samr", "gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.samr",
-		"gcrma-rs.constant.3.pmonly.medianpolish.vsn.1.cyberT", "gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.limma", "gcrma-rs.constant.3.pmonly.medianpolish.vsn.1.limma",
-		"none.vsn.3.pmonly.medianpolish.constant.3.limma", "none.vsn.3.pmonly.medianpolish.quantiles.1.fc", "rma.vsn.1.pmonly.medianpolish.scaling.3.samr") # 9 of the top 10 routes
+#methods = c("gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.cyberT", "none.vsn.3.pmonly.medianpolish.constant.3.samr", "gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.samr",
+	#	"gcrma-rs.constant.3.pmonly.medianpolish.vsn.1.cyberT", "gcrma-rs.scaling.3.pmonly.medianpolish.vsn.1.limma", "gcrma-rs.constant.3.pmonly.medianpolish.vsn.1.limma",
+	#	"none.vsn.3.pmonly.medianpolish.constant.3.limma", "none.vsn.3.pmonly.medianpolish.quantiles.1.fc", "rma.vsn.1.pmonly.medianpolish.scaling.3.samr") # 9 of the top 10 routes
 
+methods = c("gcrma-rs.scaling.3.pmonly.medianpolish.none.1.cyberT", "gcrma-rs.scaling.3.pmonly.medianpolish.none.1.samr",
+            "gcrma-rs.constant.3.pmonly.medianpolish.none.1.cyberT", "gcrma-rs.scaling.3.pmonly.medianpolish.none.1.limma", "gcrma-rs.constant.3.pmonly.medianpolish.none.1.limma") # 9 of the top 10 routes. Achemy method can't not be performed using this script.
 
 fpr.stop = 0.05 # AUC is the area under the curve when fpr <= fpr.stop
 write.table(t(c("n", paste("AUC", fpr.stop, sep="_"))), file="test/DEGAUC.diag", append=F, row.names=F, col.names=F, quote=F, sep="\t")
