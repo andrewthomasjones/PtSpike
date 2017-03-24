@@ -14,7 +14,7 @@ library(ROCR)
 # Note: In ROCR, f(x) >= cutoff => class "+"; f(x) < cutoff => class "-". 
 # Use abs(statistic) to evaluate DEGs: the higher value, the more likely to be DEGs.
 # abs(statistic) >= cutoff => class "+" (DEGs) 
-fcinfo = read.table("Affyprobeset.fcvalue", header=F)
+fcinfo = read.table("./Affyprobeset.fcvalue", header=F)
 truth = rep(NA, nrow(fcinfo))
 # empty probesets are considered as not differentially expressed probesets 
 truth[fcinfo$V2!=0 & fcinfo$V2 != "MC" & fcinfo$V2!="MF" & fcinfo$V2!="NS" & fcinfo$V2!=1] = 1 # differentially expressed probesets
