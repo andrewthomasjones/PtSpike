@@ -3,20 +3,43 @@
 #source("https://bioconductor.org/biocLite.R")
 #biocLite("limma")
 #biocLite("impute")
+#biocLite("samr")
+#biocLite("edge")
 
 #required
 library(EMMIXcontrasts)
 library(lattice)
+library(edge)
+library(samr)
+library(limma)
 
 #optional - for nicer plots 
 library(ggplot2)
 library(reshape)
 
-library(samr)
-library(limma)
 
 #read data, needs to be in same folder
 load("./goldenspike.Rdata")
+
+fit <- lmFit(goldenspike[,1:6],design=c(0,0,0,1,1,1))
+fit <- eBayes(fit)
+
+
+gold2<-as.matrix(goldenspike[,1:6])
+colnames(gold2)<-NULL
+stud<-build_study(gold2,grp=as.factor(c(1,1,1,2,2,2)), sampling = "static")
+t1<-odp(stud)
+
+
+goldenspike$odpscore<-qvalueObj(t1)$stat
+odpOrder<-order(goldenspike$odpscore,decreasing = TRUE)
+odpSortTscore<- goldenspike[odpOrder,]
+
+n_genes<-length(odpSortTscore$isNull)
+#cumulative sum 
+odpSortTscore$numNull<- cumsum(odpSortTscore$isNull)
+odpSortTscore$propTrue<- (cumsum(odpSortTscore$isNull))/(1:n_genes)
+
 
 #add extra column to goldenspike make clearer which are null genes
 goldenspike$isNull<-abs(goldenspike$fold)==1
@@ -27,6 +50,16 @@ row_t.test<-function(row,A_cols,B_cols){
   test<-t.test(row[A_cols], row[B_cols],var.equal=TRUE)
   return(abs(test$statistic))
 }
+goldenspike$limmatscore<-abs(fit$F)
+gslimmaOrder<-order(goldenspike$limmatscore,decreasing = TRUE)
+gslimmaSortTscore<- goldenspike[gslimmaOrder,]
+
+n_genes<-length(gslimmaSortTscore$isNull)
+#cumulative sum 
+gslimmaSortTscore$numNull<- cumsum(gslimmaSortTscore$isNull)
+gslimmaSortTscore$propTrue<- (cumsum(gslimmaSortTscore$isNull))/(1:n_genes)
+
+
 
 goldenspike$tscore<-apply(goldenspike, 1, row_t.test, 1:3, 4:6)
 gstOrder<-order(goldenspike$tscore,decreasing = TRUE)
@@ -99,7 +132,7 @@ SAMSort_padded<-temp
 
 
 #plot together for niceness
-combined <- data.frame(n = 1:nrow(goldenspike), contrast = gsSortContrast$propTrue, tscore = gsSortTscore$propTrue, SAM_s0=SAM0Sort_padded, SAM=SAMSort_padded )
+combined <- data.frame(n = 1:nrow(goldenspike), contrast = gsSortContrast$propTrue, tscore = gsSortTscore$propTrue, SAM_s0=SAM0Sort_padded, SAM=SAMSort_padded, limma=gslimmaSortTscore$propTrue, odp=odpSortTscore$propTrue)
 
 combined2<-melt(combined, id='n')
 combined3<-subset(combined2, n<=1000)
@@ -107,6 +140,5 @@ combined3<-subset(combined2, n<=1000)
 p<-ggplot(data=combined3, aes(x=n, y=value, colour=variable)) + geom_line()
 p<-p+scale_colour_discrete(name = "Method")+ scale_x_continuous(name = "N")+ scale_y_continuous(name = "Prop True Nulls") 
 p
-
 
 
